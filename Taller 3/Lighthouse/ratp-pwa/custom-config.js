@@ -6,17 +6,20 @@ module.exports = {
   passes: [
     {
       passName: 'defaultPass',
-      gatherers: ['./Lighthouse/card-gatherer'],
+      gatherers: ['./Lighthouse/card-gatherer', './Lighthouse/api-gatherer'],
     },
   ],
 
-  audits: ['./Lighthouse/card-audit'],
+  audits: ['./Lighthouse/card-audit', './Lighthouse/api-audit'],
 
   categories: {
     ratp_pwa: {
       name: 'Ratp pwa metrics',
       description: 'Metrics for the ratp timetable site',
-      auditRefs: [{ id: 'card-audit', weight: 1 }],
+      auditRefs: [
+        { id: 'card-audit', weight: 1 },
+        { id: 'api-audit', weight: 1 },
+      ],
     },
   },
 }

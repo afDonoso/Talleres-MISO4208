@@ -131,6 +131,7 @@
 
   app.getSchedule = function (key, label) {
     var url = 'https://api-ratp.pierre-grimaud.fr/v3/schedules/' + key
+    const startTime = Date.now()
 
     var request = new XMLHttpRequest()
     request.onreadystatechange = function () {
@@ -152,6 +153,9 @@
           app.updateTimetableCard(schedule)
         })
       }
+
+      const finishTime = Date.now()
+      window.apiLoadTime = finishTime - startTime
     }
     request.open('GET', url)
     request.send()
