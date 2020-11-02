@@ -1,5 +1,9 @@
 # Taller 8
 
+<b>Integrantes:</b>
+* Mateo Salcedo – 201720208
+* Andrés Donoso – 201729427
+
 ## Pitest Report
 
 ![Pitest Report](images/Pitest_report.png)
