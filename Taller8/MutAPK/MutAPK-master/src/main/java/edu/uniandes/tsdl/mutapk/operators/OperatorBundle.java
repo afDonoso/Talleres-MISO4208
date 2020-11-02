@@ -26,15 +26,17 @@ public class OperatorBundle {
 	private static final String PROPERTY_FILE_NAME = "operators";
 	private ResourceBundle bundle;
 
-//	public enum TextBasedOperator {
-//		ActivityNotDefined(1), InvalidActivityName(3), InvalidColor(3), InvalidLabel(28), MissingPermission(9), WrongStringResource(10), SDKVersion(12), WrongMainActivity(8);
-//
-//		public int id;
-//
-//		TextBasedOperator(int id) {
-//			this.id = id;
-//		}
-//	}
+	// public enum TextBasedOperator {
+	// ActivityNotDefined(1), InvalidActivityName(3), InvalidColor(3),
+	// InvalidLabel(28), MissingPermission(9), WrongStringResource(10),
+	// SDKVersion(12), WrongMainActivity(8);
+	//
+	// public int id;
+	//
+	// TextBasedOperator(int id) {
+	// this.id = id;
+	// }
+	// }
 
 	public OperatorBundle(String propertyDir) throws MalformedURLException {
 		init(propertyDir);
@@ -78,7 +80,6 @@ public class OperatorBundle {
 	public int getAmountOfSelectedOperators() {
 		return bundle.keySet().size();
 	}
-	
 
 	public String printSelectedOperators() {
 

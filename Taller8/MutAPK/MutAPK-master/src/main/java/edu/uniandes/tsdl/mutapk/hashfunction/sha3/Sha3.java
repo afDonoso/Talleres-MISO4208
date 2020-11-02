@@ -12,7 +12,6 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.TrueFileFilter;
 import org.bouncycastle.jcajce.provider.digest.SHA3.DigestSHA3;
 
-
 public class Sha3 {
 
 	/**
@@ -21,8 +20,7 @@ public class Sha3 {
 	private Sha3() {
 	}
 
-	public static String sha512File(final File file)
-			throws FileNotFoundException, IOException {
+	public static String sha512File(final File file) throws FileNotFoundException, IOException {
 		final DigestSHA3 sha3 = new DigestSHA3(512);
 		if (file.isFile()) {
 			sha3.update(fileHash(file));
@@ -36,8 +34,7 @@ public class Sha3 {
 		return hashToString(sha3.digest());
 	}
 
-	public static String sha512FileSeparte(final File file)
-			throws FileNotFoundException, IOException {
+	public static String sha512FileSeparte(final File file) throws FileNotFoundException, IOException {
 		if (file.isFile()) {
 			return hashToString(fileHash(file));
 		} else {
@@ -45,7 +42,8 @@ public class Sha3 {
 			Collection<File> files = FileUtils.listFiles(new File(file.getAbsolutePath()), TrueFileFilter.INSTANCE,
 					TrueFileFilter.INSTANCE);
 			for (File fileHash : files) {
-				String string = hashToString(fileHash(fileHash)); 
+				String string = hashToString(fileHash(fileHash));
+
 				hashes.add(string);
 			}
 			return hashes.toString();
@@ -54,13 +52,13 @@ public class Sha3 {
 
 	private static byte[] fileHash(final File file) throws FileNotFoundException, IOException {
 		final DigestSHA3 sha3 = new DigestSHA3(512);
-		BufferedInputStream bis =new BufferedInputStream(new FileInputStream(file));
+		BufferedInputStream bis = new BufferedInputStream(new FileInputStream(file));
 		int n = 0;
 		byte[] buffer = new byte[8192];
 		while ((n = bis.read(buffer)) > 0) {
 			sha3.update(buffer, 0, n);
-	    }
-	    bis.close();
+		}
+		bis.close();
 		byte[] hash = sha3.digest();
 		bis.close();
 		return hash;

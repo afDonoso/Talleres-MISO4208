@@ -69,7 +69,7 @@ public class MutAPK {
 	static int confidenceLevel = -1;
 	static int marginError = -1;
 
-	static OperatorBundle operatorBundle;	
+	static OperatorBundle operatorBundle;
 
 	static HashMap<String, SmaliAST> smaliASTs = new HashMap<String, SmaliAST>();
 
@@ -95,7 +95,9 @@ public class MutAPK {
 		}
 	}
 
-	public static void runMutAPK(String[] args) throws NumberFormatException, FileNotFoundException, IOException, ParseException, MutAPKException, InterruptedException, ParserConfigurationException, SAXException, RecognitionException {
+	public static void runMutAPK(String[] args)
+			throws NumberFormatException, FileNotFoundException, IOException, ParseException, MutAPKException,
+			InterruptedException, ParserConfigurationException, SAXException, RecognitionException {
 
 		// Read JSON config file
 		readConfig(args[0]);
@@ -105,7 +107,8 @@ public class MutAPK {
 		System.out.println("## Selected Mutation Operators:\n");
 		System.out.println(operatorBundle.printSelectedOperators());
 
-		// Check correctness of parameters' values and preprocess values to fit OS path format 		
+		// Check correctness of parameters' values and preprocess values to fit OS path
+		// format
 		checkAndPrepareParameters();
 
 		Helper.getInstance();
@@ -115,14 +118,13 @@ public class MutAPK {
 		String apkAbsolutePath = APKToolWrapper.openAPK(apkPath, extraPath);
 		System.out.println("--------------------------------------");
 
-
-		//--------------------------------------------
+		// --------------------------------------------
 		// Run detection phase for AST-based detectors
-		//--------------------------------------------
+		// --------------------------------------------
 		// Generate HashMap with all the ASTs
 		SourceCodeProcessor scp = new SourceCodeProcessor();
 		scp.generateASTsMap(extraPath, appName, smaliASTs);
-		if(ignoreDeadCode) {
+		if (ignoreDeadCode) {
 
 			Long initTime = System.currentTimeMillis();
 
@@ -136,14 +138,14 @@ public class MutAPK {
 			int cNDC = 0;
 			int cDC = 0;
 
-			for(Entry<String, HashMap<String, CallGraphNode>> entry : callGraph.entrySet()) {
-				for(Entry<String, CallGraphNode> entryy : entry.getValue().entrySet()) {
+			for (Entry<String, HashMap<String, CallGraphNode>> entry : callGraph.entrySet()) {
+				for (Entry<String, CallGraphNode> entryy : entry.getValue().entrySet()) {
 					CallGraphNode cGN = entryy.getValue();
 					boolean isDeadCode = methodIsDeadCode(cGN);
-					if(!isDeadCode) {
+					if (!isDeadCode) {
 						cNDC++;
 					} else {
-						if(deadCode.get(cGN.getUnitName())!=null) {
+						if (deadCode.get(cGN.getUnitName()) != null) {
 							deadCode.get(cGN.getUnitName()).put(cGN.getId(), cGN);
 						} else {
 							HashMap<String, CallGraphNode> temp = new HashMap<String, CallGraphNode>();
@@ -154,30 +156,30 @@ public class MutAPK {
 					}
 				}
 			}
-			System.out.println("CalledAndDefined			| "+cNDC);
-			System.out.println("DeadCode			| "+cDC);
+			System.out.println("CalledAndDefined			| " + cNDC);
+			System.out.println("DeadCode			| " + cDC);
 			System.out.println("\n----------------------------------");
 
 			// Check Dead Code Methods
 
-			//			for(Entry<String, HashMap<String, CallGraphNode>> entry : deadCode.entrySet()) {
-			//				System.out.println(entry.getKey());
-			//				for(Entry<String, CallGraphNode> entryy : entry.getValue().entrySet()) {
-			//					System.out.println("	"+entryy.getKey());
-			//				}
-			//			}
+			// for(Entry<String, HashMap<String, CallGraphNode>> entry :
+			// deadCode.entrySet()) {
+			// System.out.println(entry.getKey());
+			// for(Entry<String, CallGraphNode> entryy : entry.getValue().entrySet()) {
+			// System.out.println(" "+entryy.getKey());
+			// }
+			// }
 
 			// Prune ASTs
-			for(Entry<String, SmaliAST> entry: smaliASTs.entrySet()) {
-				if(deadCode.get(entry.getKey())!=null) {
-					smaliASTs.put(entry.getKey(), ASTHelper.pruneAST(entry.getValue(),deadCode.get(entry.getKey())));				
+			for (Entry<String, SmaliAST> entry : smaliASTs.entrySet()) {
+				if (deadCode.get(entry.getKey()) != null) {
+					smaliASTs.put(entry.getKey(), ASTHelper.pruneAST(entry.getValue(), deadCode.get(entry.getKey())));
 				}
 			}
 
-			Long duration = (System.currentTimeMillis()-initTime);
+			Long duration = (System.currentTimeMillis() - initTime);
 			System.out.println("");
-			System.out.println("> It took "+duration+" miliseconds to remove dead code from APK analysis.");
-
+			System.out.println("> It took " + duration + " miliseconds to remove dead code from APK analysis.");
 
 		}
 
@@ -185,10 +187,11 @@ public class MutAPK {
 		List<MutationLocationDetector> textBasedDetectors = operatorBundle.getTextBasedDetectors();
 
 		// Run detection phase for Text-based detectors
-		HashMap<MutationType, List<MutationLocation>> locations = TextBasedDetectionsProcessor.process("temp", textBasedDetectors);
+		HashMap<MutationType, List<MutationLocation>> locations = TextBasedDetectionsProcessor.process("temp",
+				textBasedDetectors);
 
 		// Generate PFP over pruned ASTs
-		for(Entry<String, SmaliAST> entry : smaliASTs.entrySet()) {
+		for (Entry<String, SmaliAST> entry : smaliASTs.entrySet()) {
 			SmaliAST temp = entry.getValue();
 
 			HashMap<MutationType, List<MutationLocation>> fileLocations = ASTHelper.findLocations(temp, operatorBundle);
@@ -208,7 +211,6 @@ public class MutAPK {
 			System.out.println(list.size() + "		| " + mutationType);
 		}
 
-
 		// Build MutationLocation List
 		List<MutationLocation> mutationLocationList = MutationLocationListBuilder.buildList(locations);
 		printLocationList(mutationLocationList, mutantsFolder, appName);
@@ -216,23 +218,23 @@ public class MutAPK {
 		System.out.println();
 		System.out.println("--------------------------------------");
 
-		if(ignoreDeadCode) {
+		if (ignoreDeadCode) {
 			// Select Selector
 			switch (selectionStrategy) {
-			case AMOUNT_MUTANTS_SS:
-				SelectorAmountMutantsMethod selectorAmountMutantsMethod = new SelectorAmountMutantsMethod();
-				SelectorAmountMutants selectorAmountMutants = new SelectorAmountMutants(false, false, totalMutants,
-						amountMutants);
-				mutationLocationList = selectorAmountMutantsMethod.mutantSelector(locations, selectorAmountMutants);
-				break;
-			case REPRESENTATIVE_SUBSET_SS:
-				SelectorConfidenceInterval selectorConfidenceInterval = new SelectorConfidenceInterval(true, false,
-						totalMutants, isRSPerOPerator, confidenceLevel, marginError);
-				SelectorConfidenceIntervalMethod CIMS = new SelectorConfidenceIntervalMethod();
-				mutationLocationList = CIMS.mutantSelector(locations, selectorConfidenceInterval);
-				break;
-			default:
-				break;
+				case AMOUNT_MUTANTS_SS:
+					SelectorAmountMutantsMethod selectorAmountMutantsMethod = new SelectorAmountMutantsMethod();
+					SelectorAmountMutants selectorAmountMutants = new SelectorAmountMutants(false, false, totalMutants,
+							amountMutants);
+					mutationLocationList = selectorAmountMutantsMethod.mutantSelector(locations, selectorAmountMutants);
+					break;
+				case REPRESENTATIVE_SUBSET_SS:
+					SelectorConfidenceInterval selectorConfidenceInterval = new SelectorConfidenceInterval(true, false,
+							totalMutants, isRSPerOPerator, confidenceLevel, marginError);
+					SelectorConfidenceIntervalMethod CIMS = new SelectorConfidenceIntervalMethod();
+					mutationLocationList = CIMS.mutantSelector(locations, selectorConfidenceInterval);
+					break;
+				default:
+					break;
 			}
 			System.out.println("");
 
@@ -247,7 +249,6 @@ public class MutAPK {
 			File manifest = new File(apkAbsolutePath + File.separator + "AndroidManifest.xml");
 			File smali = new File(apkAbsolutePath + File.separator + "smali");
 			File resource = new File(apkAbsolutePath + File.separator + "res");
-
 
 			// Create ApkHashSeparator
 			ApkHashSeparator apkHashSeparator = mProcessor.generateApkHashSeparator(manifest, smali, resource, 0);
@@ -265,21 +266,22 @@ public class MutAPK {
 
 	private static boolean methodIsDeadCode(CallGraphNode cGN) {
 
-		String[] exceptions = new String[] {
-				"<init>","<clinit>","init","onClick","onCreate","onOptionsItemSelected","onCreateOptionsMenu","onResume","update",
-				"query","getType","insert","doInBackground","onPostExecute","delete","clone","onCreateDialog","onCancel","onRestoreInstanceState",
-				"onSaveInstanceState","onRetainNonConfigurationInstance","run","getParent","onNothingSelected","onItemSelected","onProgressUpdate",
-				"onPreExecute", "onReceive","toString","onItemClick","getUri","onPreferenceClick","onTabChanged","getDropDownView","getCount",
-				"getViewTypeCount","getView","registerDataSetObserver","saved","isEnabled","onActivityResult","unregisterDataSetObserver","attach",
-				"onChange","isIntentAvailable","onDateChanged","onContextItemSelected", "onCreateContextMenu"
-		};
+		String[] exceptions = new String[] { "<init>", "<clinit>", "init", "onClick", "onCreate",
+				"onOptionsItemSelected", "onCreateOptionsMenu", "onResume", "update", "query", "getType", "insert",
+				"doInBackground", "onPostExecute", "delete", "clone", "onCreateDialog", "onCancel",
+				"onRestoreInstanceState", "onSaveInstanceState", "onRetainNonConfigurationInstance", "run", "getParent",
+				"onNothingSelected", "onItemSelected", "onProgressUpdate", "onPreExecute", "onReceive", "toString",
+				"onItemClick", "getUri", "onPreferenceClick", "onTabChanged", "getDropDownView", "getCount",
+				"getViewTypeCount", "getView", "registerDataSetObserver", "saved", "isEnabled", "onActivityResult",
+				"unregisterDataSetObserver", "attach", "onChange", "isIntentAvailable", "onDateChanged",
+				"onContextItemSelected", "onCreateContextMenu" };
 
-		if(cGN.getCallers().size()>0) {
+		if (cGN.getCallers().size() > 0) {
 			return false;
 		}
 
 		for (int i = 0; i < exceptions.length; i++) {
-			if(cGN.getId().startsWith(exceptions[i]+"(")) {
+			if (cGN.getId().startsWith(exceptions[i] + "(")) {
 				return false;
 			}
 		}
@@ -287,13 +289,14 @@ public class MutAPK {
 
 	}
 
-	private static void appendLocations(HashMap<MutationType, List<MutationLocation>> source, HashMap<MutationType, List<MutationLocation>> target){
+	private static void appendLocations(HashMap<MutationType, List<MutationLocation>> source,
+			HashMap<MutationType, List<MutationLocation>> target) {
 
-		for(Entry<MutationType, List<MutationLocation>> entry : source.entrySet()){
+		for (Entry<MutationType, List<MutationLocation>> entry : source.entrySet()) {
 			List<MutationLocation> sourceLocations = source.get(entry.getKey());
 			List<MutationLocation> targetLocations = target.get(entry.getKey());
 
-			if(targetLocations != null){
+			if (targetLocations != null) {
 				targetLocations.addAll(sourceLocations);
 			} else {
 				targetLocations = sourceLocations;
@@ -304,7 +307,8 @@ public class MutAPK {
 
 	}
 
-	private static void readConfig(String configFilePath) throws NumberFormatException, FileNotFoundException, IOException, ParseException {
+	private static void readConfig(String configFilePath)
+			throws NumberFormatException, FileNotFoundException, IOException, ParseException {
 
 		JSONParser parser = new JSONParser();
 		try {
@@ -336,23 +340,24 @@ public class MutAPK {
 
 			JSONObject selectionParameters = (JSONObject) jsonObject.get("selectionParameters");
 			switch (selectionStrategy) {
-			case ALL_MUTANTS_SS:
-				break;
-			case AMOUNT_MUTANTS_SS:
-				amountMutants = Integer.parseInt(getVariableValues(selectionParameters, "amountMutants"));
-				System.out.println("amountMutants 		| " + amountMutants);				
-				break;
-			case REPRESENTATIVE_SUBSET_SS:
-				isRSPerOPerator = Boolean.valueOf(getVariableValues(selectionParameters, "perOperator"));
-				confidenceLevel = Integer.parseInt(getVariableValues(selectionParameters, "confidenceLevel"));
-				marginError = Integer.parseInt(getVariableValues(selectionParameters, "marginError"));
-				System.out.println("isRSPerOPerator 	| " + isRSPerOPerator);
-				System.out.println("confidenceLevel 	| " + confidenceLevel);
-				System.out.println("marginError 		| " + marginError);				
-				break;
-			default:
-				throw new UnsupportedOperationException("The " + selectionStrategy
-						+ " selection strategy is not recognized, the operators available are: all, amountMutants and representativeSubset ");//and APKVersions");
+				case ALL_MUTANTS_SS:
+					break;
+				case AMOUNT_MUTANTS_SS:
+					amountMutants = Integer.parseInt(getVariableValues(selectionParameters, "amountMutants"));
+					System.out.println("amountMutants 		| " + amountMutants);
+					break;
+				case REPRESENTATIVE_SUBSET_SS:
+					isRSPerOPerator = Boolean.valueOf(getVariableValues(selectionParameters, "perOperator"));
+					confidenceLevel = Integer.parseInt(getVariableValues(selectionParameters, "confidenceLevel"));
+					marginError = Integer.parseInt(getVariableValues(selectionParameters, "marginError"));
+					System.out.println("isRSPerOPerator 	| " + isRSPerOPerator);
+					System.out.println("confidenceLevel 	| " + confidenceLevel);
+					System.out.println("marginError 		| " + marginError);
+					break;
+				default:
+					throw new UnsupportedOperationException("The " + selectionStrategy
+							+ " selection strategy is not recognized, the operators available are: all, amountMutants and representativeSubset ");// and
+																																					// APKVersions");
 			}
 			System.out.println("----------------------------------");
 			System.out.println();
@@ -372,12 +377,14 @@ public class MutAPK {
 		// Preprocess paths to fit to OS filsesystem format
 		String os = System.getProperty("os.name").toLowerCase();
 		if (os.indexOf("win") >= 0) {
-			mutantsFolder = mutantsFolder.replaceFirst("/", File.separator+File.separator) +File.separator;
-			apkPath = apkPath.replaceAll("/", File.separator+File.separator);
+			mutantsFolder = mutantsFolder.replaceFirst("/", File.separator + File.separator) + File.separator;
+			apkPath = apkPath.replaceAll("/", File.separator + File.separator);
 			apkName = apkPath.substring(apkPath.lastIndexOf("\\"));
 
-			extraPath = extraPath.equals("")?"":extraPath.replaceAll("/", File.separator+File.separator) + File.separator;
-			operatorsDir = operatorsDir.equals("")?"":operatorsDir.replaceAll("/", File.separator+File.separator) + File.separator;
+			extraPath = extraPath.equals("") ? ""
+					: extraPath.replaceAll("/", File.separator + File.separator) + File.separator;
+			operatorsDir = operatorsDir.equals("") ? ""
+					: operatorsDir.replaceAll("/", File.separator + File.separator) + File.separator;
 		} else {
 			apkName = apkPath.substring(apkPath.lastIndexOf("/"));
 		}
@@ -386,18 +393,19 @@ public class MutAPK {
 
 		String decodedPath = Helper.getInstance().getCurrentDirectory();
 		// apkPath exists
-		if(!(new File(Paths.get(decodedPath, apkPath).toAbsolutePath().toString())).exists()){
+		if (!(new File(Paths.get(decodedPath, apkPath).toAbsolutePath().toString())).exists()) {
 			throw new MutAPKException("Path to APK is not correct. The path does not exist.");
 		}
-		// mutantsfolder exists (in case it does not exist to create it) and to identify if it is an absolute or a relative path
-		File mutantsFolderFO = new File(Paths.get(decodedPath, mutantsFolder).toAbsolutePath().toString()); 
-		if(!mutantsFolderFO.exists()){
+		// mutantsfolder exists (in case it does not exist to create it) and to identify
+		// if it is an absolute or a relative path
+		File mutantsFolderFO = new File(Paths.get(decodedPath, mutantsFolder).toAbsolutePath().toString());
+		if (!mutantsFolderFO.exists()) {
 			mutantsFolderFO.mkdirs();
 		}
 
 		// operatorsDir if the folder exists, check if exists a .properties file
-		File operFolderFO = new File(Paths.get(decodedPath, operatorsDir).toAbsolutePath().toString()); 
-		if(!operFolderFO.exists()){
+		File operFolderFO = new File(Paths.get(decodedPath, operatorsDir).toAbsolutePath().toString());
+		if (!operFolderFO.exists()) {
 			throw new MutAPKException("Path to operator file is not correct. The path does not exist.");
 		}
 		System.out.println(operFolderFO.getCanonicalPath().toString());
@@ -408,47 +416,51 @@ public class MutAPK {
 				return name.endsWith("operators.properties");
 			}
 		});
-		if(properties.length==0) {
-			throw new MutAPKException("Path to operators config file is not correct. No operators.properties file exist in folder");
+		if (properties.length == 0) {
+			throw new MutAPKException(
+					"Path to operators config file is not correct. No operators.properties file exist in folder");
 		}
-		// extraPath if it is a parameter of JSON, if the folder exists and if it is an absolute or relative path
-		File extraFolderFO = new File(Paths.get(decodedPath, extraPath).toAbsolutePath().toString()); 
-		if(!extraFolderFO.exists()){
+		// extraPath if it is a parameter of JSON, if the folder exists and if it is an
+		// absolute or relative path
+		File extraFolderFO = new File(Paths.get(decodedPath, extraPath).toAbsolutePath().toString());
+		if (!extraFolderFO.exists()) {
 			throw new MutAPKException("Path to extra folder is not correct. The path does not exist.");
 		}
 		File[] extraFO = extraFolderFO.listFiles(new FilenameFilter() {
 
 			@Override
 			public boolean accept(File dir, String name) {
-				return ( name.endsWith("apktool.jar") || name.endsWith("uber-apk-signer.jar") || name.endsWith("materialistic.jks"));
+				return (name.endsWith("apktool.jar") || name.endsWith("uber-apk-signer.jar")
+						|| name.endsWith("materialistic.jks"));
 			}
 		});
-		if(extraFO.length<3) {
+		if (extraFO.length < 3) {
 			throw new MutAPKException("Path to extra folder is not correct. No valid extra folder was provided.");
 		}
 
 		// Check specific selection strategy parameters
 		switch (selectionStrategy) {
-		case AMOUNT_MUTANTS_SS:
-			if (amountMutants<=0) {
-				throw new MutAPKException("The \"amountMutants\" parameter must be greater than 0.");				
-			}
-			if (operatorBundle.getAmountOfSelectedOperators() > amountMutants) {
-				throw new MutAPKException("You must request at least as many mutants as selected operators, right now you have selected "
-						+ operatorBundle.getAmountOfSelectedOperators() + " operators but only have asked for " + amountMutants
-						+ " mutants");
-			}
-			break;
-		case REPRESENTATIVE_SUBSET_SS:
-			if (confidenceLevel > 100 || confidenceLevel < 0) {
-				throw new MutAPKException("The \"confidenceLevel\" parameter must be between 0 and 100");
-			}
-			// TODO What are the max value of a marginError ?
-			if (marginError<0) {
-				throw new MutAPKException("The \"marginError\" parameter must be greater then 0");
-			}
-		default:
-			break;
+			case AMOUNT_MUTANTS_SS:
+				if (amountMutants <= 0) {
+					throw new MutAPKException("The \"amountMutants\" parameter must be greater than 0.");
+				}
+				if (operatorBundle.getAmountOfSelectedOperators() > amountMutants) {
+					throw new MutAPKException(
+							"You must request at least as many mutants as selected operators, right now you have selected "
+									+ operatorBundle.getAmountOfSelectedOperators()
+									+ " operators but only have asked for " + amountMutants + " mutants");
+				}
+				break;
+			case REPRESENTATIVE_SUBSET_SS:
+				if (confidenceLevel > 100 || confidenceLevel < 0) {
+					throw new MutAPKException("The \"confidenceLevel\" parameter must be between 0 and 100");
+				}
+				// TODO What are the max value of a marginError ?
+				if (marginError < 0) {
+					throw new MutAPKException("The \"marginError\" parameter must be greater then 0");
+				}
+			default:
+				break;
 		}
 	}
 
@@ -474,8 +486,7 @@ public class MutAPK {
 		String temp = (String) jsonObject.get(name);
 		if (temp != null && !temp.equals("") && !temp.equals(" ")) {
 			return temp;
-		} 
-		else {
+		} else {
 			throw new IllegalArgumentException("It's neccesary a path for the " + name);
 		}
 	}
