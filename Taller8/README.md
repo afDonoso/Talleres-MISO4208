@@ -5,6 +5,7 @@
 ![Pitest Report](images/Pitest_report.png)
 
 ## MDroid+
+[Reporte](https://github.com/afDonoso/Talleres-MISO4208/blob/master/Taller8/MDROID/reporte.docx)
 
 ## MutAPK
 
