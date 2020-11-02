@@ -10,7 +10,7 @@ dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
 test/temp/
-test/mutantes/
+test/mutants/
 .vscode/
 .settings/
 .classpath

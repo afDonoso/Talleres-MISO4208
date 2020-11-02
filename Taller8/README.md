@@ -49,3 +49,5 @@ En este, definimos el apk que vamos a utilizar y el número de mutantes que quer
 | NullIntent              | 1               |
 | FindViewByIDReturnsNull | 32              |
 | InvalidActivityName     | 1               |
+
+![Cantidad mutantes](images/Mutants.png)
