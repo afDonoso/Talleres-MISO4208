@@ -1,0 +1,194 @@
+Inferred project: simianarmy, version: 2.6.0-SNAPSHOT
+Unable to determine the host name on this Windows instance
+[buildinfo] Not using buildInfo properties file for this build.
+:compileJava UP-TO-DATE
+:processResources UP-TO-DATE
+:classes UP-TO-DATE
+:jettyRunSLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/C:/Users/teo-1/.gradle/wrapper/dists/gradle-2.11-bin/452syho4l32rlk2s8ivdjogs8/gradle-2.11/lib/gradle-core-2.11.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/C:/Users/teo-1/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-log4j12/1.6.1/bd245d6746cdd4e6203e976e21d597a46f115802/slf4j-log4j12-1.6.1.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
+
+2020-11-14 21:41:14.767 - INFO  BasicMonkeyServer - [BasicMonkeyServer.java:125] using client properties /client.properties
+2020-11-14 21:41:14.771 - INFO  BasicMonkeyServer - [BasicMonkeyServer.java:104] using standard client for simianarmy.client.context.class
+2020-11-14 21:41:14.772 - INFO  BasicMonkeyServer - [BasicMonkeyServer.java:104] using standard client for simianarmy.client.chaos.class
+2020-11-14 21:41:14.772 - INFO  BasicMonkeyServer - [BasicMonkeyServer.java:52] Adding Chaos Monkey.
+2020-11-14 21:41:15.049 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:191] loading properties file: /simianarmy.properties
+2020-11-14 21:41:15.050 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:191] loading properties file: /client.properties
+2020-11-14 21:41:15.051 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:191] loading properties file: /chaos.properties
+2020-11-14 21:41:15.052 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:114] The following are properties in the context.
+2020-11-14 21:41:15.052 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.chaos.ASG.monkey-target.probability = 1.0
+2020-11-14 21:41:15.053 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.chaos.networkcorruption.enabled = false
+2020-11-14 21:41:15.053 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.chaos.shutdowninstance.enabled = true
+2020-11-14 21:41:15.053 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.chaos.faildynamodb.enabled = false
+2020-11-14 21:41:15.054 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.calendar.timezone = America/Los_Angeles
+2020-11-14 21:41:15.054 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.chaos.nullroute.enabled = false
+2020-11-14 21:41:15.054 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.chaos.mandatoryTermination.windowInDays = 32
+2020-11-14 21:41:15.054 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.chaos.burnmoney = false
+2020-11-14 21:41:15.055 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.chaos.leashed = false
+2020-11-14 21:41:15.056 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.calendar.openHour = 9
+2020-11-14 21:41:15.056 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.chaos.notification.sourceEmail = m.salcedo@uniandes.edu.co
+2020-11-14 21:41:15.056 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.scheduler.frequencyUnit = HOURS
+2020-11-14 21:41:15.057 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.chaos.networklatency.enabled = false
+2020-11-14 21:41:15.057 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.chaos.notification.global.receiverEmail = m.salcedo@uniandes.edu.co
+2020-11-14 21:41:15.057 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.chaos.ASG.probability = 1.0
+2020-11-14 21:41:15.057 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.chaos.detachvolumes.enabled = false
+2020-11-14 21:41:15.058 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.chaos.enabled = true
+2020-11-14 21:41:15.058 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.chaos.ASG.maxTerminationsPerDay = 1.0
+2020-11-14 21:41:15.058 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.chaos.mandatoryTermination.enabled = false
+2020-11-14 21:41:15.059 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.chaos.burncpu.enabled = false
+2020-11-14 21:41:15.059 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.recorder.sdb.domain = SIMIAN_ARMY
+2020-11-14 21:41:15.059 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.chaos.killprocesses.enabled = false
+2020-11-14 21:41:15.059 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.client.aws.accountName = default
+2020-11-14 21:41:15.060 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.chaos.fails3.enabled = false
+2020-11-14 21:41:15.060 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.chaos.failec2.enabled = false
+2020-11-14 21:41:15.060 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.client.aws.region = us-west-2
+2020-11-14 21:41:15.061 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.chaos.filldisk.enabled = false
+2020-11-14 21:41:15.061 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.chaos.ASG.enabled = false
+2020-11-14 21:41:15.061 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.chaos.ASG.monkey-target.enabled = true
+2020-11-14 21:41:15.061 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.chaos.blockallnetworktraffic.enabled = false
+2020-11-14 21:41:15.062 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.calendar.closeHour = 15
+2020-11-14 21:41:15.062 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.chaos.burnio.enabled = false
+2020-11-14 21:41:15.062 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.calendar.isMonkeyTime = true
+2020-11-14 21:41:15.062 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.scheduler.frequency = 1
+2020-11-14 21:41:15.063 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.aws.email.region = us-west-2
+2020-11-14 21:41:15.063 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.scheduler.threads = 1
+2020-11-14 21:41:15.063 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.chaos.mandatoryTermination.defaultProbability = 0.5
+2020-11-14 21:41:15.063 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.chaos.networkloss.enabled = false
+2020-11-14 21:41:15.064 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.chaos.faildns.enabled = false
+2020-11-14 21:41:22.906 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:449] using standard class for simianarmy.calendar.class
+2020-11-14 21:41:22.909 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:449] using standard class for simianarmy.client.recorder.class
+2020-11-14 21:41:24.479 - INFO  ChaosType - [ChaosType.java:63] ChaosType: ShutdownInstance: enabled=true
+2020-11-14 21:41:24.480 - INFO  ChaosType - [ChaosType.java:63] ChaosType: BlockAllNetworkTraffic: enabled=false
+2020-11-14 21:41:24.481 - INFO  ChaosType - [ChaosType.java:63] ChaosType: DetachVolumes: enabled=false
+2020-11-14 21:41:24.482 - INFO  ChaosType - [ChaosType.java:63] ChaosType: BurnCpu: enabled=false
+2020-11-14 21:41:24.483 - INFO  ChaosType - [ChaosType.java:63] ChaosType: BurnIO: enabled=false
+2020-11-14 21:41:24.483 - INFO  ChaosType - [ChaosType.java:63] ChaosType: KillProcesses: enabled=false
+2020-11-14 21:41:24.484 - INFO  ChaosType - [ChaosType.java:63] ChaosType: NullRoute: enabled=false
+2020-11-14 21:41:24.484 - INFO  ChaosType - [ChaosType.java:63] ChaosType: FailEc2: enabled=false
+2020-11-14 21:41:24.485 - INFO  ChaosType - [ChaosType.java:63] ChaosType: FailDns: enabled=false
+2020-11-14 21:41:24.486 - INFO  ChaosType - [ChaosType.java:63] ChaosType: FailDynamoDb: enabled=false
+2020-11-14 21:41:24.486 - INFO  ChaosType - [ChaosType.java:63] ChaosType: FailS3: enabled=false
+2020-11-14 21:41:24.487 - INFO  ChaosType - [ChaosType.java:63] ChaosType: FillDisk: enabled=false
+2020-11-14 21:41:24.488 - INFO  ChaosType - [ChaosType.java:63] ChaosType: NetworkCorruption: enabled=false
+2020-11-14 21:41:24.489 - INFO  ChaosType - [ChaosType.java:63] ChaosType: NetworkLatency: enabled=false
+2020-11-14 21:41:24.489 - INFO  ChaosType - [ChaosType.java:63] ChaosType: NetworkLoss: enabled=false
+2020-11-14 21:41:24.490 - INFO  BasicMonkeyServer - [BasicMonkeyServer.java:54] Adding Volume Tagging Monkey.
+2020-11-14 21:41:24.491 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:191] loading properties file: /simianarmy.properties
+2020-11-14 21:41:24.492 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:191] loading properties file: /client.properties
+2020-11-14 21:41:24.493 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:191] loading properties file: /volumeTagging.properties
+2020-11-14 21:41:24.494 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:114] The following are properties in the context.
+2020-11-14 21:41:24.494 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.aws.email.region = us-west-2
+2020-11-14 21:41:24.494 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.calendar.timezone = America/Los_Angeles
+2020-11-14 21:41:24.495 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.client.aws.accountName = default
+2020-11-14 21:41:24.495 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.calendar.isMonkeyTime = true
+2020-11-14 21:41:24.495 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.recorder.sdb.domain = SIMIAN_ARMY
+2020-11-14 21:41:24.495 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.calendar.closeHour = 15
+2020-11-14 21:41:24.496 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.client.aws.region = us-west-2
+2020-11-14 21:41:24.496 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.scheduler.frequency = 1
+2020-11-14 21:41:24.496 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.calendar.openHour = 9
+2020-11-14 21:41:24.497 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.volumeTagging.leashed = true
+2020-11-14 21:41:24.497 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.scheduler.frequencyUnit = HOURS
+2020-11-14 21:41:24.497 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.scheduler.threads = 1
+2020-11-14 21:41:24.497 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.volumeTagging.enabled = true
+2020-11-14 21:41:32.299 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:449] using standard class for simianarmy.calendar.class
+2020-11-14 21:41:32.299 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:449] using standard class for simianarmy.client.recorder.class
+2020-11-14 21:41:32.945 - INFO  AWSClient - [AWSClient.java:463] Getting all EC2 instances in region us-west-2.
+2020-11-14 21:41:33.739 - INFO  AWSClient - [AWSClient.java:480] Got 1 EC2 instances in region us-west-2.
+2020-11-14 21:41:33.739 - INFO  BasicMonkeyServer - [BasicMonkeyServer.java:56] Adding Janitor Monkey.
+2020-11-14 21:41:33.744 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:191] loading properties file: /simianarmy.properties
+2020-11-14 21:41:33.744 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:191] loading properties file: /client.properties
+2020-11-14 21:41:33.745 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:191] loading properties file: /janitor.properties
+2020-11-14 21:41:33.746 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:114] The following are properties in the context.
+2020-11-14 21:41:33.746 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.janitor.notification.sourceEmail = m.salcedo@uniandes.edu.co
+2020-11-14 21:41:33.747 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.janitor.rule.orphanedInstanceRule.retentionDaysWithOwner = 3
+2020-11-14 21:41:33.747 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.janitor.rule.orphanedInstanceRule.retentionDaysWithoutOwner = 8
+2020-11-14 21:41:33.747 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.calendar.timezone = America/Los_Angeles
+2020-11-14 21:41:33.748 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.janitor.Eureka.enabled = false
+2020-11-14 21:41:33.748 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.janitor.rule.oldEmptyASGRule.enabled = true
+2020-11-14 21:41:33.748 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.calendar.openHour = 11
+2020-11-14 21:41:33.749 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.janitor.rule.untaggedRule.retentionDaysWithoutOwner = 2
+2020-11-14 21:41:33.749 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.scheduler.frequencyUnit = HOURS
+2020-11-14 21:41:33.749 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.janitor.rule.deleteOnTerminationRule.retentionDays = 3
+2020-11-14 21:41:33.750 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.janitor.rule.oldUnusedLaunchConfigRule.enabled = true
+2020-11-14 21:41:33.750 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.janitor.rule.noGeneratedAMIRule.ageThreshold = 30
+2020-11-14 21:41:33.750 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.janitor.summaryEmail.to = m.salcedo@uniandes.edu.co
+2020-11-14 21:41:33.751 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.janitor.rule.deleteOnTerminationRule.enabled = true
+2020-11-14 21:41:33.751 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.recorder.sdb.domain = SIMIAN_ARMY
+2020-11-14 21:41:33.751 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.janitor.rule.untaggedRule.requiredTags = owner, purpose, project
+2020-11-14 21:41:33.752 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.janitor.rule.untaggedRule.enabled = false
+2020-11-14 21:41:33.752 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.client.aws.accountName = default
+2020-11-14 21:41:33.752 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.janitor.rule.oldDetachedVolumeRule.enabled = true
+2020-11-14 21:41:33.752 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.janitor.rule.unusedImageRule.enabled = false
+2020-11-14 21:41:33.753 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.janitor.rule.untaggedRule.resources = Instance, ASG, EBS_Volume, EBS_Snapshot
+2020-11-14 21:41:33.753 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.janitor.rule.suspendedASGRule.retentionDays = 5
+2020-11-14 21:41:33.753 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.janitor.rule.oldDetachedVolumeRule.retentionDays = 7
+2020-11-14 21:41:33.753 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.janitor.rule.unusedImageRule.retentionDays = 3
+2020-11-14 21:41:33.754 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.janitor.rule.orphanedInstanceRule.enabled = true
+2020-11-14 21:41:33.754 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.janitor.rule.oldUnusedLaunchConfigRule.retentionDays = 3
+2020-11-14 21:41:33.754 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.client.aws.region = us-west-2
+2020-11-14 21:41:33.754 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.janitor.rule.orphanedInstanceRule.opsworks.parentage = false
+2020-11-14 21:41:33.755 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.janitor.leashed = false
+2020-11-14 21:41:33.755 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.janitor.rule.oldEmptyASGRule.retentionDays = 10
+2020-11-14 21:41:33.755 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.janitor.rule.noGeneratedAMIRule.retentionDays = 7
+2020-11-14 21:41:33.756 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.janitor.rule.suspendedASGRule.enabled = true
+2020-11-14 21:41:33.756 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.janitor.rule.oldDetachedVolumeRule.detachDaysThreshold = 30
+2020-11-14 21:41:33.756 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.janitor.enabledResources = Instance, ASG, EBS_Volume, EBS_Snapshot, Launch_Config
+2020-11-14 21:41:33.756 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.calendar.closeHour = 11
+2020-11-14 21:41:33.757 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.janitor.rule.unusedImageRule.lastReferenceDaysThreshold = 45
+2020-11-14 21:41:33.757 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.janitor.rule.suspendedASGRule.suspensionAgeThreshold = 2
+2020-11-14 21:41:33.757 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.janitor.rule.noGeneratedAMIRule.enabled = true
+2020-11-14 21:41:33.758 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.janitor.notification.daysBeforeTermination = 2
+2020-11-14 21:41:33.758 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.janitor.enabled = true
+2020-11-14 21:41:33.758 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.calendar.isMonkeyTime = true
+2020-11-14 21:41:33.758 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.janitor.notification.defaultEmail = m.salcedo@uniandes.edu.co
+2020-11-14 21:41:33.759 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.janitor.rule.orphanedInstanceRule.instanceAgeThreshold = 2
+2020-11-14 21:41:33.759 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.janitor.rule.oldEmptyASGRule.launchConfigAgeThreshold = 50
+2020-11-14 21:41:33.759 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.janitor.rule.untaggedRule.retentionDaysWithOwner = 2
+2020-11-14 21:41:33.760 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.janitor.image.crawler.lookBackDays = 60
+2020-11-14 21:41:33.760 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.scheduler.frequency = 1
+2020-11-14 21:41:33.760 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.aws.email.region = us-west-2
+2020-11-14 21:41:33.760 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.janitor.rule.oldUnusedLaunchConfigRule.ageThreshold = 4
+2020-11-14 21:41:33.760 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.janitor.resources.sdb.domain = SIMIAN_ARMY
+2020-11-14 21:41:33.761 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.scheduler.threads = 1
+2020-11-14 21:41:41.550 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:449] using standard class for simianarmy.calendar.class
+2020-11-14 21:41:41.550 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:449] using standard class for simianarmy.client.recorder.class
+2020-11-14 21:41:42.164 - INFO  BasicJanitorMonkeyContext - [BasicJanitorMonkeyContext.java:184] Discovery/Eureka is not enabled, use the dummy instance validator.
+2020-11-14 21:41:42.207 - INFO  BasicMonkeyServer - [BasicMonkeyServer.java:58] Adding Conformity Monkey.
+2020-11-14 21:41:42.211 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:191] loading properties file: /simianarmy.properties
+2020-11-14 21:41:42.212 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:191] loading properties file: /client.properties
+2020-11-14 21:41:42.212 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:191] loading properties file: /conformity.properties
+2020-11-14 21:41:42.213 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:114] The following are properties in the context.
+2020-11-14 21:41:42.213 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.calendar.openHour = 0
+2020-11-14 21:41:42.213 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.conformity.notification.closeHour = 24
+2020-11-14 21:41:42.214 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.conformity.rule.InstanceTooOld.instanceAgeThreshold = 180
+2020-11-14 21:41:42.214 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.conformity.rule.InstanceInSecurityGroup.enabled = true
+2020-11-14 21:41:42.214 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.calendar.closeHour = 24
+2020-11-14 21:41:42.215 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.conformity.summaryEmail.to = m.salcedo@uniandes.edu.co
+2020-11-14 21:41:42.215 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.conformity.rule.InstanceTooOld.enabled = true
+2020-11-14 21:41:42.215 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.conformity.rule.SameZonesInElbAndAsg.enabled = true
+2020-11-14 21:41:42.215 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.client.aws.accountName = default
+2020-11-14 21:41:42.216 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.scheduler.threads = 1
+2020-11-14 21:41:42.216 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.conformity.enabled = true
+2020-11-14 21:41:42.216 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.conformity.rule.InstanceHasStatusUrl.enabled = true
+2020-11-14 21:41:42.217 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.conformity.rule.InstanceIsHealthyInEureka.enabled = true
+2020-11-14 21:41:42.217 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.scheduler.frequencyUnit = HOURS
+2020-11-14 21:41:42.217 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.client.aws.region = us-west-2
+2020-11-14 21:41:42.217 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.conformity.leashed = false
+2020-11-14 21:41:42.217 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.conformity.sdb.domain = SIMIAN_ARMY
+2020-11-14 21:41:42.218 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.conformity.notification.openHour = 0
+2020-11-14 21:41:42.218 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.conformity.notification.sourceEmail = m.salcedo@uniandes.edu.co
+2020-11-14 21:41:42.218 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.scheduler.frequency = 1
+2020-11-14 21:41:42.219 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.aws.email.region = us-west-2
+2020-11-14 21:41:42.219 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.conformity.rule.InstanceHasHealthCheckUrl.enabled = true
+2020-11-14 21:41:42.219 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.conformity.Eureka.enabled = false
+2020-11-14 21:41:42.219 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.calendar.timezone = America/Los_Angeles
+2020-11-14 21:41:42.220 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.conformity.notification.defaultEmail = m.salcedo@uniandes.edu.co
+2020-11-14 21:41:42.220 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.calendar.isMonkeyTime = true
+2020-11-14 21:41:42.220 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.conformity.rule.InstanceInSecurityGroup.requiredSecurityGroups = nf-infrastructure, nf-datacenter
+2020-11-14 21:41:42.221 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:118] simianarmy.recorder.sdb.domain = SIMIAN_ARMY
+2020-11-14 21:41:50.033 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:449] using standard class for simianarmy.calendar.class
+2020-11-14 21:41:50.033 - INFO  BasicSimianArmyContext - [BasicSimianArmyContext.java:449] using standard class for simianarmy.client.recorder.class
+2020-11-14 21:41:50.624 - INFO  BasicConformityMonkeyContext - [BasicConformityMonkeyContext.java:102] Conformity Monkey is running in: [us-west-2]
+2020-11-14 21:41:50.628 - INFO  BasicConformityMonkeyContext - [BasicConformityMonkeyContext.java:141] Discovery/Eureka is not enabled, the conformity rules that need Eureka are not added
