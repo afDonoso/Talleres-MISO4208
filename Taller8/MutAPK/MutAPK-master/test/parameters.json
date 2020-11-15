@@ -1,0 +1,13 @@
+{
+	"apkPath": "./apk/habitica-3-0-1-1.apk",
+	"appName": "com.habitrpg.android.habitica",
+	"mutantsFolder": "./mutants",
+	"operatorsDir": "./",
+	"multithreadExec": "true",
+	"ignoreDeadCode": "true",
+	"extraPath": "./extra",
+	"selectionStrategy": "amountMutants",
+	"selectionParameters": {
+		"amountMutants": "50"
+	}
+}
